@@ -218,7 +218,7 @@ class _Add_transactionState extends State<Add_transaction> {
                       borderRadius: BorderRadius.circular(16,),
                     ),
                     padding: const EdgeInsets.all(12),
-                    child: const Icon(
+                    child: const Icon(   
                       Icons.date_range,
                       size: 24, 
                       color: Colors.white,
