@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class Add_transaction extends StatefulWidget {
   const Add_transaction({super.key});
@@ -101,6 +102,48 @@ class _Add_transactionState extends State<Add_transaction> {
                    ),
               ],
             ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                 Container(
+                  decoration:  BoxDecoration(
+                    color: Colors.blueAccent,
+                    borderRadius: BorderRadius.circular(16,),
+                  ),
+                  padding: const EdgeInsets.all(12),
+                  child: const Icon(
+                    Icons.moving_sharp,
+                    size: 24, 
+                    color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(
+                    width:12,
+                  ),
+                  const ChoiceChip(
+                    label: Text("Income"), 
+                    selectedColor: Vx.blue500,
+                    selected: true
+                  ),
+                  const SizedBox(
+                    width: 12,
+                  ),
+                  const ChoiceChip(
+                    label: Text("Expence"), 
+                    selected: false
+                  ),
+              ],
+            ),
+          const SizedBox(
+            height: 20,
+          ),
+          TextButton(onPressed: (){}, child: "Date".text.make(),),
+          const SizedBox(
+            height: 20,
+          ),
+          ElevatedButton(onPressed: (){}, child: "Add".text.make()),
         ],
       )
     );
