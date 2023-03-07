@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:myexpence/controllers/db_helper.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'add_transaction.dart';
@@ -89,15 +90,22 @@ class _HomePageState extends State<HomePage> {
                         ),
                         // color: Colors.white70,
                         padding:  const EdgeInsets.all(12),
-                        child:  const Icon(
-                          Icons.image,
-                          size: 32,
-                        ),
+                        // child:  const Icon(
+                        //   Icons.image,
+                        //   size: 32,
+                        // ),
+                       child: CircleAvatar(child: Image.asset("assets/images/shubham1.png"), ),
                       ),
                       const SizedBox(
                         width: 8,
                       ),
-                      const Text("WelCome Shubham"),
+                      const Text("WelCome Shubham", 
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          fontFamily:AutofillHints.birthdayDay
+                        ),
+                        ),
                         ],
                       ),
                       Container(
@@ -181,28 +189,28 @@ class _HomePageState extends State<HomePage> {
                     )
                   ),
                 ),
-
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.all(16),
-                    // height: 800,
-                    child: SingleChildScrollView(
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        // physics: const NeverScrollableScrollPhysics(),
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: ((context, index) {
-                          Map dataAtIndex = snapshot.data![index];
-                          if(dataAtIndex['type']=="Expense"){
-                            return expenceTile(dataAtIndex['amount'], dataAtIndex['note']);
-                          }
-                          else{
-                            return incomeTile(dataAtIndex['amount'], dataAtIndex['note']);
-                          }
-                        })),
-                    ),
-                  ),
-                )
+                    // SingleChildScrollView(
+                      Container(
+                        child: SingleChildScrollView(
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            // physics: const NeverScrollableScrollPhysics(),
+                            // physics: Scrollable(viewportBuilder: (BuildContext context, ViewportOffset position) {  },),
+                            itemCount: snapshot.data!.length,
+                            itemBuilder: ((context, index) {
+                              Map dataAtIndex = snapshot.data![index];
+                              if(dataAtIndex['type']=="Expense"){
+                                return expenceTile(dataAtIndex['amount'], dataAtIndex['note']);
+                              }
+                              else{
+                                return incomeTile(dataAtIndex['amount'], dataAtIndex['note']);
+                              }
+                            })),
+                        ),
+                      ),
+                    // ),
+                  // ),
+                // )
 
               ],
             );
