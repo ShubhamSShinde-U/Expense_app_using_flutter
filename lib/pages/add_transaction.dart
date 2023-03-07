@@ -239,10 +239,11 @@ class _Add_transactionState extends State<Add_transaction> {
             ),
             SizedBox(height:50,
             child: ElevatedButton(
-              onPressed: (){
+              onPressed: () async {
                 if(amount!=null && note.isNotEmpty){
                   DbHelper dbHelper = DbHelper();
-                  dbHelper.addData(amount!, selectedDate, note, type);
+                  await dbHelper.addData(amount!, selectedDate, note, type);
+                  Navigator.of(context).pop();
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: "Data Added".text.make()));
                 }
                 else{
