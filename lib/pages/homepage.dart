@@ -182,22 +182,25 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
 
-                Container(
-                  padding: EdgeInsets.all(16),
-                  child: SingleChildScrollView(
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      // physics: const NeverScrollableScrollPhysics(),
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: ((context, index) {
-                        Map dataAtIndex = snapshot.data![index];
-                        if(dataAtIndex['type']=="Expense"){
-                          return expenceTile(dataAtIndex['amount'], dataAtIndex['note']);
-                        }
-                        else{
-                          return incomeTile(dataAtIndex['amount'], dataAtIndex['note']);
-                        }
-                      })),
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.all(16),
+                    // height: 800,
+                    child: SingleChildScrollView(
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        // physics: const NeverScrollableScrollPhysics(),
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: ((context, index) {
+                          Map dataAtIndex = snapshot.data![index];
+                          if(dataAtIndex['type']=="Expense"){
+                            return expenceTile(dataAtIndex['amount'], dataAtIndex['note']);
+                          }
+                          else{
+                            return incomeTile(dataAtIndex['amount'], dataAtIndex['note']);
+                          }
+                        })),
+                    ),
                   ),
                 )
 
