@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:myexpence/controllers/db_helper.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Add_transaction extends StatefulWidget {
@@ -237,7 +238,20 @@ class _Add_transactionState extends State<Add_transaction> {
               height: 20,
             ),
             SizedBox(height:50,
-            child: ElevatedButton(onPressed: (){}, child: "Add".text.make())),
+            child: ElevatedButton(
+              onPressed: (){
+                if(amount!=null && note.isNotEmpty){
+                  DbHelper dbHelper = DbHelper();
+                  dbHelper.addData(amount!, selectedDate, note, type);
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: "Data Added".text.make()));
+                }
+                else{
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: "Please Enter all feilds".text.make()));
+                }
+              },
+              child: "Add".text.make()
+              )
+            ),
           ],
         )
       ),

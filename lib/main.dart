@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:myexpence/pages/homepage.dart';
 import 'package:velocity_x/velocity_x.dart';
-void main() {
+import 'package:hive/hive.dart';
+void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox('money');
   runApp(const MyApp());
 }
 
